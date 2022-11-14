@@ -7,24 +7,35 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Node n1 = new Node(1);
-            Node n2 = new Node(2);
-            Node n3 = new Node(3);
-            Node n4 = new Node(4);
-            Node n5 = new Node(5);
-            Node n6 = new Node(6);
-            Node n7 = new Node(7);
+            Node luisAlberto = new Node(new Person("Luis Suarez", 35));
+            Node robin = new Node(new Person("Robin Van Persie", 39));
+            Node ivan = new Node(new Person("Ivan Alonso", 43));
+            Node daniel = new Node(new Person("Daniel Sturridge", 33));
+            Node elNiño = new Node(new Person("Fernando Torres", 38));
+            Node didier = new Node(new Person("Didier Drogba", 44));
+            Node mario = new Node(new Person("Mario Gomez", 37));
+            Node mesut= new Node(new Person("Mesut Ozil", 34));
 
-            n1.AddChildren(n2);
-            n1.AddChildren(n3);
+            luisAlberto.AddChildren(robin);
+            luisAlberto.AddChildren(elNiño);
 
-            n2.AddChildren(n4);
-            n2.AddChildren(n5);
+            robin.AddChildren(didier);
+            mesut.AddChildren(mario);
 
-            n3.AddChildren(n6);
-            n3.AddChildren(n7);
+            elNiño.AddChildren(daniel);
+            elNiño.AddChildren(ivan);
 
             // visitar el árbol aquí
+
+            INodesContent nodesAges= new AgeSummatoryContent(luisAlberto);
+            Console.WriteLine(nodesAges.GetResult());
+
+            INodesContent nodesNames= new LongestNameContent(luisAlberto);
+            Console.WriteLine(nodesNames.GetResult());
+
+            INodesContent nodesOldest= new OldestContent(luisAlberto);
+            Console.WriteLine(nodesOldest.GetResult());
+            
         }
     }
 }
